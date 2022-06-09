@@ -5,6 +5,10 @@ import mysql from 'mysql2/promise';
 import express from 'express';
 import db from './models';
 
+import { employees } from './seeders/customEmployees'
+import { departments } from './seeders/customDepartments';
+import { positions } from './seeders/customPositions';
+
 const port = process.env.SERVER_PORT || 3000;
 const app = express();
 
