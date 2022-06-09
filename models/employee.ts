@@ -25,7 +25,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     shift!: string;
 
     static associate(models: any) {
-      // define association here
+      this.hasOne(models.Employee, { foreignKey: 'admin_id' });
+      this.belongsTo(models.Department, { foreignKey: 'deparment_id' });
+      this.belongsTo(models.Position, { foreignKey: 'position_id' });
     }
   }
   Employee.init({
