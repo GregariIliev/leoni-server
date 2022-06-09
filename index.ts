@@ -16,5 +16,10 @@ mysql.createConnection({
     .then(async (c) => {
         await c.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`);
         await c.end();
+
+        db.sequelize.sync().then(() => {
+
+            })
+        })
     })
     .catch(err => console.log(err));
