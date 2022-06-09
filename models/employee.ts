@@ -77,18 +77,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     },
     email: {
       type: DataTypes.STRING(30),
-      allowNull: true,
-      unique: true,
-      validate: {
-        isEmail: true,
-        notNull: {
-          msg: 'Email cannot be empty.'
-        },
-        len: {
-          args: [0, 30],
-          msg: 'Email must be at least 30 characters.'
-        }
-      }
+      unique: true
     },
     password: {
       type: DataTypes.STRING,
