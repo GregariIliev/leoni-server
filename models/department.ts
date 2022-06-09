@@ -41,6 +41,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
     maxEmployees: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        min: {
+          args: [20],
+          msg: 'Maximum employees on this department is 20'
+        }
+      },
       field: 'max_employees'
     },
     salaryMultiplayer: {
