@@ -36,7 +36,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       primaryKey: true,
       autoIncrement: true
     },
-    fistName: {
+    firstName: {
       type: DataTypes.STRING(20),
       allowNull: false,
       validate: {
