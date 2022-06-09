@@ -37,7 +37,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       }
     },
     salaryMultiplayer: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT(1.1),
       allowNull: true,
       defaultValue: 0,
       field: 'salary_multiplayer'
