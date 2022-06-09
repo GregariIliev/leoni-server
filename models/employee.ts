@@ -7,6 +7,8 @@ interface EmployeeAttributes {
   firstName: string,
   lastName: string,
   middleName: string,
+  email: string,
+  password: string,
   address: string,
   phone: string,
   salary: number,
@@ -19,6 +21,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     firstName!: string;
     lastName!: string;
     middleName!: string;
+    email!: string;
+    password!: string;
     address!: string;
     phone!: string;
     salary!: number;
@@ -44,7 +48,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
           args: [0, 20],
           msg: 'Fisrst name must be at least 20 characters.'
         }
-      }
+      },
+      field: 'first_name'
     },
     middleName: {
       type: DataTypes.STRING(20),
@@ -54,7 +59,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
           args: [0, 20],
           msg: 'Middle name must be at least 20 characters.'
         }
-      }
+      },
+      field: 'middle_name'
     },
     lastName: {
       type: DataTypes.STRING(20),
@@ -63,6 +69,31 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Last name must be at least 20 characters.'
+        }
+      },
+      field: 'last_name'
+    },
+    email: {
+      type: DataTypes.STRING(30),
+      allowNull: true,
+      unique: true,
+      validate: {
+        isEmail: true,
+        notNull: {
+          msg: 'Email cannot be empty.'
+        },
+        len: {
+          args: [0, 30],
+          msg: 'Email must be at least 30 characters.'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Password cannot be empty.'
         }
       }
     },
