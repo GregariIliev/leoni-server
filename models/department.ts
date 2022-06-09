@@ -50,7 +50,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       field: 'max_employees'
     },
     salaryMultiplayer: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT(1.1),
       allowNull: true,
       defaultValue: 0,
       validate: {
