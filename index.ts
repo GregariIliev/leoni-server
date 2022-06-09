@@ -9,8 +9,9 @@ import { employees } from './seeders/customEmployees'
 import { departments } from './seeders/customDepartments';
 import { positions } from './seeders/customPositions';
 
-const port = process.env.SERVER_PORT || 3000;
-const app = express();
+import { App } from './app';
+
+const PORT: string | number = process.env.SERVER_PORT || 3000;
 
 mysql.createConnection({
     host: process.env.DB_HOST,
@@ -27,10 +28,9 @@ mysql.createConnection({
             departments.map(async (d) => await db.Department.create(d));
             positions.map(async (p) => await db.Position.create(p));
 
-            app.listen(port, () => {
-                console.log(`Servers is runinng on port ${port}...`);
+            const app = new App();
 
-            })
+            app.run(PORT)
         })
     })
     .catch(err => console.log(err));
