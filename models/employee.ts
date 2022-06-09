@@ -10,10 +10,7 @@ interface EmployeeAttributes {
   address: string,
   phone: string,
   salary: number,
-  shift: string,
-  departmentId: number,
-  positionId: number,
-  adminId: number
+  shift: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
