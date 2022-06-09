@@ -50,8 +50,5 @@ module.exports = (sequelize: any, DataTypes: any) => {
     sequelize,
     modelName: 'Position'
   });
-
-  //Position.belongsToMany(Department, { through: 'DepartmentsPositions' });
-
   return Position;
 };
