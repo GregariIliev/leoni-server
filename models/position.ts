@@ -1,6 +1,6 @@
 'use strict';
 
-import { Model } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 
 interface PositionAttributes {
   id: string,
