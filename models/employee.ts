@@ -131,8 +131,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
   }, {
     hooks: {
       beforeCreate: async (user) => {
-        const hashPassword = await bcrypt.hash(user.password, 12);
-        user.password = hashPassword
+        if (user.password) {
+          const hashPassword = await bcrypt.hash(user.password, 12);
+          user.password = hashPassword
+        }
       }
     },
     sequelize,
