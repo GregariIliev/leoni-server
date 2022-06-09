@@ -21,10 +21,15 @@ mysql.createConnection({
         await c.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`);
         await c.end();
 
-        db.sequelize.sync().then(() => {
+        db.sequelize.sync({ force: true }).then(() => {
+
+            employees.map(async (e) => await db.Employee.create(e));
+            departments.map(async (d) => await db.Department.create(d));
+            positions.map(async (p) => await db.Position.create(p));
+
             app.listen(port, () => {
                 console.log(`Servers is runinng on port ${port}...`);
-                
+
             })
         })
     })
