@@ -23,9 +23,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
     phone!: string;
     salary!: number;
     shift!: string;
-    departmentId!: number;
-    positionId!: number;
-    adminId!: number
 
     static associate(models: any) {
       // define association here
