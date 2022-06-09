@@ -3,6 +3,8 @@ export const employees = [
         firstName: 'Gregari',
         middleName: 'Georgiev',
         lastName: 'Iliev',
+        email: 'admin@abv.bg',
+        password: 'admin',
         address: 'Drujba 427',
         phone: '0885744009',
         salary: 1000,
