@@ -53,6 +53,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
+      validate: {
+        min: 0,
+        max: 2
+      },
       field: 'salary_multiplayer'
     }
   }, {
