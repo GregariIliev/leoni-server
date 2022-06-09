@@ -18,7 +18,9 @@ mysql.createConnection({
         await c.end();
 
         db.sequelize.sync().then(() => {
-
+            app.listen(port, () => {
+                console.log(`Servers is runinng on port ${port}...`);
+                
             })
         })
     })
