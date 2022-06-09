@@ -142,24 +142,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
           msg: 'Shift must one of A, B, C or R'
         }
       }
-    },
-    departmentId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
-      field: 'department_id'
-    },
-    positionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true,
-      field: 'position_id'
-    },
-    adminId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      unique: true,
-      field: 'admin_id'
     }
   }, {
     sequelize,
