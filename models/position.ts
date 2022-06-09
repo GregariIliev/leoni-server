@@ -40,6 +40,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.FLOAT(1.1),
       allowNull: true,
       defaultValue: 0,
+      validate: {
+        min: 0,
+        max: 2
+      },
       field: 'salary_multiplayer'
     }
   }, {
