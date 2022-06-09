@@ -4,7 +4,7 @@ import { Model, DataTypes } from 'sequelize';
 
 interface EmployeeAttributes {
   id: string,
-  fistName: string,
+  firstName: string,
   lastName: string,
   middleName: string,
   address: string,
@@ -19,7 +19,7 @@ interface EmployeeAttributes {
 module.exports = (sequelize: any, DataTypes: any) => {
   class Employee extends Model<EmployeeAttributes> implements EmployeeAttributes {
     id!: string;
-    fistName!: string;
+    firstName!: string;
     lastName!: string;
     middleName!: string;
     address!: string;
