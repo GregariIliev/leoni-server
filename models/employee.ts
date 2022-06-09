@@ -80,13 +80,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       unique: true
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: 'Password cannot be empty.'
-        }
-      }
+      type: DataTypes.STRING
     },
     address: {
       type: DataTypes.STRING(50),
