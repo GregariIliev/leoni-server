@@ -1,4 +1,8 @@
 import express, { Router, Application } from 'express'
+import cors from 'cors'
+import { Routes } from './routes/routes';
+
+
 
 export class App {
     declare app: Application;
