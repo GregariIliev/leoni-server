@@ -16,9 +16,17 @@ export class App {
     run(PORT: string | number) {
         
         this.app.listen(PORT, () => {
-            this.app.use()
-            
+
+            this.app.use(cors());
+            this.app.use(express.json());
+            this.app.use(express.urlencoded({ extended: true }));
+
+            const routes = new Routes();
+
+            routes.setRoutes();
+
+            this.app.use(routes.getRoutes());
         })
-        
+
     }
 }
