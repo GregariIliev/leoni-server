@@ -14,7 +14,7 @@ export class App {
     }
 
     run(PORT: string | number) {
-        
+
         this.app.listen(PORT, () => {
 
             this.app.use(cors());
