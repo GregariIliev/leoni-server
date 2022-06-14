@@ -11,7 +11,7 @@ export class Routes {
 
     constructor() {
         this.router = Router();
-        this.authController = new AuthController();
+        this.authController = new AuthController(this.router);
         this.departmentController = new DepartmentController(this.router);
         this.positionController = new PositionController(this.router);
     }
