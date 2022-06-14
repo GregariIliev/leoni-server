@@ -1,7 +1,7 @@
 import express, { Router, Application } from 'express'
 import cors from 'cors'
 import { Routes } from './routes/routes';
-
+import db from './models';
 
 
 export class App {
