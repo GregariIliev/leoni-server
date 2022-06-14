@@ -59,4 +59,16 @@ db.createCustomPositions = async () => {
     .catch(() => console.log('Custom positions creation FAIL.'));
 }
 
+db.addPositionsOnDepartments = async (departmentId: number, positionsIs: number[]) => {
+  const department = await db.Department.findByPk(departmentId);
+  
+  department.addPositions(positionsIs)
+    .then(() => {
+      console.log('Custom position are added to department.');
+    })
+    .catch(() => {
+      console.log('Fali to add custom position to department.');
+    })
+}
+
 export default db;
