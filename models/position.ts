@@ -17,7 +17,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     shift!: string
 
     static associate(models: any) {
-      this.belongsToMany(models.Department, { through: 'departments_positions', foreignKey: 'position_id' })
+      this.belongsToMany(models.Department, { through: 'Departments_Positions', foreignKey: 'position_id' })
     }
   }
 
