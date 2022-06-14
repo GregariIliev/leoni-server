@@ -28,9 +28,10 @@ mysql.createConnection({
                 await db.addPositionsOnDepartments(4, [8])
             });
 
+        setTimeout(() => {
             const app = new App();
 
-            app.run(PORT)
-        })
+            app.run(PORT);
+        }, 2000)
     })
     .catch(err => console.log(err));
