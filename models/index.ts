@@ -46,4 +46,11 @@ db.createCustomEmployees = async () => {
     .then(() => console.log('Custom employees created succesful.'))
     .catch(() => console.log('Custom employees creation FAIL.'));
 }
+
+db.createCustomDepartments = async () => {
+  await db.Department.bulkCreate(departments)
+    .then(() => console.log('Custom departments created seccesful.'))
+    .catch(() => console.log('Custom departments creation FAIL.'));
+}
+
 export default db;
