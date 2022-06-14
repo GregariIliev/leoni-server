@@ -8,6 +8,7 @@ export class Routes {
     declare router: any;
     declare authController: AuthController;
     declare departmentController: DepartmentController;
+    declare positionController: PositionController;
 
     constructor() {
         this.router = Router();
@@ -17,7 +18,6 @@ export class Routes {
     }
 
     setRoutes() {
-
         this.authController.setRoutes();
         this.departmentController.setRoutes();
         this.positionController.setRoutes();
