@@ -1,11 +1,13 @@
 import db from '../models/index'
 
 export class DepartmentService {
+    constructor() {
 
+    }
 
-    async getAllDepartments(){
-        const departments = await db.Department.findAll();
+    async getAllDepartmentsIncludePositions() {
+        return await db.Department.findAll({ include: db.Position });
+    }
 
-        return departments;
     }
 }
