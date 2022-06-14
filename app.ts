@@ -17,6 +17,8 @@ export class App {
 
         this.app.listen(PORT, () => {
 
+            console.log(`Server is running on port ${PORT}`);
+
             this.app.use(cors());
             this.app.use(express.json());
             this.app.use(express.urlencoded({ extended: true }));
