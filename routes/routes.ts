@@ -1,27 +1,26 @@
 import { Router } from "express";
 
 import { AuthController } from "../controller/authController";
-import { DashboardController } from "../controller/dashboardController";
+import { DepartmentController } from "../controller/departmentController";
 
 export class Routes {
     declare router: any;
     declare authController: AuthController;
-    declare dasshboardController: DashboardController;
+    declare departmentController: DepartmentController;
 
     constructor() {
         this.router = Router();
         this.authController = new AuthController();
-        this.dasshboardController = new DashboardController();
+        this.departmentController = new DepartmentController(this.router);
     }
 
     setRoutes() {
 
         this.authController.setRoutes();
-        this.dasshboardController.setRoutes();
-        
+        this.departmentController.setRoutes();
 
         this.router.use(this.authController.getRoutes());
-        this.router.use(this.dasshboardController.getRoutes());
+        this.router.use(this.departmentController.getRoutes());
     }
 
     getRoutes() {
