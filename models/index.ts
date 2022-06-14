@@ -8,6 +8,11 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.ts')[env];
 const db: any = {};
 
+
+import { employees } from '../seeders/customEmployees';
+import { departments } from '../seeders/customDepartments';
+import { positions } from '../seeders/customPositions';
+
 let sequelize: any;
 
 if (config.use_env_variable) {
