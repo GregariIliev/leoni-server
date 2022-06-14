@@ -3,11 +3,9 @@ import { Router } from "express";
 import { AuthService } from "../service/authService";
 
 export class AuthController {
-    declare router: Router;
     declare authService: AuthService;
 
-    constructor() {
-        this.router = Router();
+    constructor(private router: Router) {
         this.authService = new AuthService;
     }
 
