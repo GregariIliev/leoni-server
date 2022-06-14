@@ -41,4 +41,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.createCustomEmployees = async () => {
+  await db.Employee.bulkCreate(employees)
+    .then(() => console.log('Custom employees created succesful.'))
+    .catch(() => console.log('Custom employees creation FAIL.'));
+}
 export default db;
