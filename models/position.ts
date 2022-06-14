@@ -10,7 +10,7 @@ interface PositionAttributes {
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Position extends Model<PositionAttributes> implements PositionAttributes {
+  class Position extends Model {
     id!: string;
     name!: string;
     salaryMultiplayer!: number;
