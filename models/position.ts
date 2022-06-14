@@ -5,7 +5,8 @@ import { Model, DataTypes } from 'sequelize';
 interface PositionAttributes {
   id: string,
   name: string,
-  salaryMultiplayer: number
+  salaryMultiplayer: number,
+  shift: string
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
