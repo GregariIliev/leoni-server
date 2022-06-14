@@ -14,6 +14,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     id!: string;
     name!: string;
     salaryMultiplayer!: number;
+    shift!: string
 
     static associate(models: any) {
       this.belongsToMany(models.Department, { through: 'departments_positions', foreignKey: 'position_id' })
@@ -46,6 +47,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
         max: 2
       },
       field: 'salary_multiplayer'
+    },
+    shift: {
+      type: DataTypes.STRING(),
+      allowNull: false,
     }
   }, {
     sequelize,
