@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { AuthController } from "../controller/authController";
 import { DepartmentController } from "../controller/departmentController";
+import { PositionController } from "../controller/positionController";
 
 export class Routes {
     declare router: any;
@@ -12,15 +13,18 @@ export class Routes {
         this.router = Router();
         this.authController = new AuthController();
         this.departmentController = new DepartmentController(this.router);
+        this.positionController = new PositionController(this.router);
     }
 
     setRoutes() {
 
         this.authController.setRoutes();
         this.departmentController.setRoutes();
+        this.positionController.setRoutes();
 
         this.router.use(this.authController.getRoutes());
         this.router.use(this.departmentController.getRoutes());
+        this.router.use(this.positionController.getRoutes());
     }
 
     getRoutes() {
