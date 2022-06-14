@@ -24,5 +24,19 @@ export const positions = [
         salaryMultiplayer: 1.4,
         shift: 'A, B, C'
     },
+    {
+        name: 'Development Engineer',
+        salaryMultiplayer: 1.9,
+        shift: 'R'
+    },
+    {
+        name: 'Production engineer',
+        salaryMultiplayer: 1.9,
+        shift: 'R'
+    },
+    {
+        name: 'HR Learning',
+        salaryMultiplayer: 1.6,
+        shift: 'R'
     }
 ]
