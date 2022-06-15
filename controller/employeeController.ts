@@ -48,8 +48,7 @@ export class EmployeeController {
                 res.status(200).json(req.body)
 
             } catch (err) {
-                console.log(err);
-
+                res.status(401).send();
             }
         })
     }
