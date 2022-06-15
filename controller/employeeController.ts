@@ -34,7 +34,7 @@ export class EmployeeController {
 
                 res.status(200).json({ Authorized: true });
 
-            } catch (error: any) {
+            } catch (error) {
 
                 res.status(401).send();
             }
@@ -47,8 +47,8 @@ export class EmployeeController {
                 console.log(req.body);
                 res.status(200).json(req.body)
 
-            } catch (err) {
-                res.status(401).send();
+            } catch (error) {
+                res.status(401).send(error);
             }
         })
     }
