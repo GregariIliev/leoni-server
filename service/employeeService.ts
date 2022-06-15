@@ -32,4 +32,10 @@ export class EmployeeService {
 
         return token;
     }
+
+    async createEmployee(employee: any){
+
+        //TODO remove admin_id and set department_id and shift_id
+        return db.Employee.create(employee);
+    }
 }
