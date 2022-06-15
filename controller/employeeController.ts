@@ -42,7 +42,7 @@ export class EmployeeController {
     }
 
     createEmployee() {
-        this.router.post('/api/employees', async (req: any, res: any) => {
+        this.router.post('/api/employees/register', async (req: any, res: any) => {
             try {
                 console.log(req.body);
                 res.status(200).json(req.body)
