@@ -3,7 +3,7 @@ import db from "../models";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-export class AuthService {
+export class EmployeeService {
     constructor() {
 
     }
