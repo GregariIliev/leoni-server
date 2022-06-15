@@ -44,7 +44,20 @@ export class EmployeeController {
     createEmployee() {
         this.router.post('/api/employees/register', async (req: any, res: any) => {
             try {
-                console.log(req.body);
+                const employee = req.body;
+                const {
+                    firstName, middleName, lastName, address, phone,
+                    department, position, shift
+                } = req.body;
+
+                if (!firstName || !middleName || !lastName || !address || !phone ||
+                    !department || !position || !shift) {
+
+                    throw new Error('Form register is not valid.')
+                }
+
+                const newEmployee = await this.employeeService.createEmployee(employee)
+
                 res.status(200).json(req.body)
 
             } catch (error) {
