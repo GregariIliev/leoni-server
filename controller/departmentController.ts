@@ -12,10 +12,6 @@ export class DepartmentController {
     setRoutes() {
         this.router.get('/api/departments', async (req: any, res: any) => {
             try {
-
-                console.log(req.query);
-                
-
                 const departments = await this.departmentService.getAllDepartmentsIncludePositions();
 
                 if (!departments) {
