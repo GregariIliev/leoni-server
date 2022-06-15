@@ -15,9 +15,7 @@ export class EmployeeController {
     }
 
     login() {
-        this.router.post('/api/employees', async (req: any, res: any) => {
-            
-            console.log(req.body);
+        this.router.post('/api/employees/login', async (req: any, res: any) => {
             try {
                 const { email, password } = req.body;
 
