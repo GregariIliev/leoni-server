@@ -1,20 +1,27 @@
 import { Router } from "express";
 
-import { AuthService } from "../service/authService";
+import { EmployeeService } from "../service/employeeService";
 
-export class AuthController {
-    declare authService: AuthService;
+export class EmployeeController {
+    declare employeeService: EmployeeService;
 
     constructor(private router: Router) {
-        this.authService = new AuthService;
+        this.employeeService = new EmployeeService;
     }
 
     setRoutes() {
+        this.login();
+        this.createEmployee();
+    }
+
+    login() {
         this.router.post('/api/employees', async (req: any, res: any) => {
+            
+            console.log(req.body);
             try {
                 const { email, password } = req.body;
 
-                const token = await this.authService.login(email, password);
+                const token = await this.employeeService.login(email, password);
 
                 if (!token) {
                     throw new Error('Invalid email or password.');
@@ -30,8 +37,21 @@ export class AuthController {
                 res.status(200).json({ Authorized: true });
 
             } catch (error: any) {
-                
+
                 res.status(401).send();
+            }
+        })
+    }
+
+    createEmployee() {
+        this.router.post('/api/employees', async (req: any, res: any) => {
+            try {
+                console.log(req.body);
+                res.status(200).json(req.body)
+
+            } catch (err) {
+                console.log(err);
+
             }
         })
     }
