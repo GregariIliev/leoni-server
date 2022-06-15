@@ -42,7 +42,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.createCustomEmployees = async () => {
-  await db.Employee.bulkCreate(employees)
+  await db.Employee.bulkCreate(employees, { individualHooks: true })
     .then(() => console.log('Custom employees created succesful.'))
     .catch(() => console.log('Custom employees creation FAIL.'));
 }
@@ -61,7 +61,7 @@ db.createCustomPositions = async () => {
 
 db.addPositionsOnDepartments = async (departmentId: number, positionsIs: number[]) => {
   const department = await db.Department.findByPk(departmentId);
-  
+
   department.addPositions(positionsIs)
     .then(() => {
       console.log('Custom position are added to department.');
