@@ -36,7 +36,7 @@ export class EmployeeController {
 
             } catch (error) {
 
-                res.status(401).send();
+                res.status(401).send(error);
             }
         })
     }
