@@ -3,6 +3,7 @@ import { Router } from "express";
 import { EmployeeService } from "../service/employeeService";
 
 export class EmployeeController {
+    private DEFAULT_SALARY: number = 700;
 
     constructor(private router: Router,
         private employeeService: EmployeeService,
