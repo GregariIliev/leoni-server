@@ -3,11 +3,8 @@ import { Router, Request, Response } from "express";
 import { PositionService } from "../service/positionService";
 
 export class PositionController {
-    declare positionService: PositionService;
 
-    constructor(private router: Router) {
-        this.positionService = new PositionService;
-    }
+    constructor(private router: Router, private positionService: PositionService) { }
 
     setRoutes() {
         // this.router.get('/api/positions', async (req: any, res: any) => {
