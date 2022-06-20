@@ -57,6 +57,39 @@ export class EmployeeController {
                 if (empty) {
                     throw new Error('Form register is not valid.')
                 }
+                const departmentId = employee.department_id;
+                const positionid = employee.position_id;
+
+                const department = await this.departmentService.getById(departmentId);
+                const position = await this.positionsService.getById(positionid);
+
+                const currentEmployeesCount = this.departmentService.count();
+                const maxEmployees = department.dataValues.maxEmployees;
+
+                if (currentEmployeesCount === maxEmployees) {
+                    throw new Error(`Department ${department.dataValues.name} is full.`);
+                }
+
+                const salaryMultiplayerDepartment = department.dataValues.salaryMultiplayer;
+                const salaryMultiplayerPositions = position.dataValues.salaryMultiplayer;
+
+                const salary = this.DEFAULT_SALARY * salaryMultiplayerDepartment * salaryMultiplayerPositions;
+
+                employee['salary'] = salary.toFixed(2);
+
+                const newEmployee = await this.employeeService.createEmployee(employee);
+
+                if (!newEmployee) {
+                    throw new Error('Fail create employee');
+                }
+
+                res.status(200).json(newEmployee)
+
+            } catch (err) {
+                res.status(401).send(err);
+            }
+        })
+    }
 
                 const newEmployee = await this.employeeService.createEmployee(employee)
 
