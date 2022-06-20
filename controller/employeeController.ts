@@ -20,7 +20,7 @@ export class EmployeeController {
     }
 
     login() {
-        this.router.post('/api/employees/login', async (req: any, res: any) => {
+        this.router.post('/api/employees/login', async (req: Request, res: Response) => {
             try {
                 const { email, password } = req.body;
 
@@ -47,7 +47,7 @@ export class EmployeeController {
     }
 
     createEmployee() {
-        this.router.post('/api/employees/register', async (req: any, res: any) => {
+        this.router.post('/api/employees/register', async (req: Request, res: Response) => {
             try {
                 const employee = req.body;
                 const {
