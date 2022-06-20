@@ -3,11 +3,8 @@ import { Router } from "express";
 import { DepartmentService } from "../service/departmentService";
 
 export class DepartmentController {
-    declare departmentService: DepartmentService;
 
-    constructor(private router: Router) {
-        this.departmentService = new DepartmentService();
-    }
+    constructor(private router: Router, private departmentService: DepartmentService) { }
 
     setRoutes() {
         this.router.get('/api/departments', async (req: any, res: any) => {
