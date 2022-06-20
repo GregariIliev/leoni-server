@@ -36,4 +36,17 @@ export class EmployeeService {
     async createEmployee(employee: any) {
         return db.Employee.create(employee);
     }
+
+    async getAll() {
+        return await db.Employee.findAll({
+            include: [
+                { model: db.Department },
+                { model: db.Position }
+            ]
+        });
+    }
+
+    async count() {
+        return await db.Employee.count();
+    }
 }
