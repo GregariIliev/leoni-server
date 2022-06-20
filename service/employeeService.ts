@@ -25,7 +25,7 @@ export class EmployeeService {
             id: 0,
             email: ''
         }
-        
+
         const SECRET: any = process.env.JWT_SECRET;
 
         const token = jwt.sign(payload, SECRET);
@@ -33,9 +33,7 @@ export class EmployeeService {
         return token;
     }
 
-    async createEmployee(employee: any){
-
-        //TODO remove admin_id and set department_id and shift_id
+    async createEmployee(employee: any) {
         return db.Employee.create(employee);
     }
 }
