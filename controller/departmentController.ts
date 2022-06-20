@@ -55,6 +55,20 @@ export class DepartmentController {
             }
         })
     }
+
+    create() {
+        this.router.post('/api/departments', async (req: Request, res: Response) => {
+            try {
+                //verify cookie
+
+                const department = await this.departmentService.create(req.body);
+
+                if (!department) {
+                    throw new Error('Fail to create new department');
+                }
+
+            } catch (err: any) {
+                res.status(401).send(err);
             }
         })
     }
