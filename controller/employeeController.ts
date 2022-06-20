@@ -3,11 +3,12 @@ import { Router } from "express";
 import { EmployeeService } from "../service/employeeService";
 
 export class EmployeeController {
-    declare employeeService: EmployeeService;
 
-    constructor(private router: Router) {
-        this.employeeService = new EmployeeService;
-    }
+    constructor(private router: Router,
+        private employeeService: EmployeeService,
+        private departmentService: DepartmentService,
+        private positionsService: PositionService
+    ) { }
 
     setRoutes() {
         this.login();
