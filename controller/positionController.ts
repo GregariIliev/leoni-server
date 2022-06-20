@@ -47,8 +47,19 @@ export class PositionController {
         })
     }
 
+    create() {
+        this.router.post('/api/positions', async (req: Request, res: Response) => {
+            try {
+                const position = await this.positionService.create(req.body);
 
+                if (!position) {
+                    throw new Error('Fail create position');
+                }
 
+            } catch (err) {
+                res.status(401).send(err);
+            }
+        })
     }
 
     getRoutes() {
