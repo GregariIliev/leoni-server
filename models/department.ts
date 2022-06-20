@@ -42,6 +42,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       validate: {
         min: {
+          args: [5],
+          msg: 'Minimum employees on this department is 5'
+        },
+        max: {
           args: [20],
           msg: 'Maximum employees on this department is 20'
         }
