@@ -41,9 +41,9 @@ export class EmployeeController {
 
                 res.status(200).json({ Authorized: true });
 
-            } catch (error) {
+            } catch (err) {
 
-                res.status(401).send(error);
+                res.status(401).send(err);
             }
         })
     }
