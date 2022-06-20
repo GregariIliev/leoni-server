@@ -97,6 +97,20 @@ export class EmployeeController {
 
             } catch (error) {
                 res.status(401).send(error);
+
+    getCount() {
+        this.router.get('/api/employees/count', async (req: Request, res: Response) => {
+            try {
+                const employeeCount = await this.employeeService.count();
+
+                if (!employeeCount) {
+                    throw new Error('Fetch employees count fail.')
+                }
+
+                res.status(200).json(employeeCount);
+
+            } catch (err) {
+                res.status(404).send(err);
             }
         })
     }
