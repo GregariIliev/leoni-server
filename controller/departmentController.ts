@@ -8,6 +8,22 @@ export class DepartmentController {
 
     setRoutes() {
         this.router.get('/api/departments', async (req: any, res: any) => {
+    getAll() {
+        this.router.get('/api/departments', async (req: Request, res: Response) => {
+            try {
+                const department = await this.departmentService.getAll();
+
+                if (!department) {
+                    throw new Error('Fetch departments fail.');
+                }
+
+                res.status(200).json(department);
+
+            } catch (err) {
+                res.status(404).send(err);
+            }
+        })
+    }
             try {
                 const departments = await this.departmentService.getAllDepartmentsIncludePositions();
 
