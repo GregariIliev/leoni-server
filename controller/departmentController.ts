@@ -51,7 +51,10 @@ export class DepartmentController {
                 res.status(200).json(departments);
 
             } catch (err) {
-                res.status(404).send();
+                res.status(404).send(err);
+            }
+        })
+    }
             }
         })
     }
