@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Request, Response } from "express";
 
 import { EmployeeService } from "../service/employeeService";
 import { DepartmentService } from "../service/departmentService";
