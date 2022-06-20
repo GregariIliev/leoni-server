@@ -5,11 +5,23 @@ export class PositionService {
 
     }
 
-    async getAllPositions() {
+    async getAll() {
         return await db.Position.findAll();
     }
 
-    async createPosition(name: string, salaryMultiplayer: number){
+    async createPosition(name: string, salaryMultiplayer: number) {
         return await db.Position.create(name, salaryMultiplayer);
+    }
+
+    async count() {
+        return await db.Position.count();
+    }
+
+    async getById(id: number) {
+        return await db.Position.findByPk(id);
+    }
+
+    async create(position: any) {
+        return await db.Position.create(position);
     }
 }
