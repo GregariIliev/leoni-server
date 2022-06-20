@@ -22,13 +22,13 @@ export class EmployeeService {
         }
 
         const payload = {
-            id: 0,
-            email: ''
+            id: employee.id,
+            email: employee.email
         }
 
         const SECRET: any = process.env.JWT_SECRET;
 
-        const token = jwt.sign(payload, SECRET);
+        const token = jwt.sign(payload, SECRET, { expiresIn: '1h'});
 
         return token;
     }
