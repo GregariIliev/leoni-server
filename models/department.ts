@@ -17,8 +17,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     salaryMultiplayer!: number;
 
     static associate(models: any) {
-      this.hasMany(models.Employee, { foreignKey: 'deparment_id' });
-      this.belongsToMany(models.Position, { through: 'Departments_Positions', foreignKey: 'departmen_id' });
+      this.belongsToMany(models.Position, { through: 'Departments_Positions', foreignKey: 'department_id' });
     }
   }
   Department.init({
