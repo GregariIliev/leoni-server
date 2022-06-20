@@ -17,6 +17,8 @@ export class EmployeeController {
     setRoutes() {
         this.login();
         this.createEmployee();
+        this.getAll();
+        this.getCount();
     }
 
     login() {
