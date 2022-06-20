@@ -1,6 +1,8 @@
 import { Router } from "express";
 
 import { EmployeeService } from "../service/employeeService";
+import { DepartmentService } from "../service/departmentService";
+import { PositionService } from "../service/positionService";
 
 export class EmployeeController {
     private DEFAULT_SALARY: number = 700;
