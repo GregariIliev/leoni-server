@@ -30,7 +30,6 @@ export class EmployeeController {
                     throw new Error('Invalid email or password.');
                 }
 
-
                 res.cookie('leoni', token, {
                     httpOnly: true,
                     expires: new Date(Date.now() + 900000),
@@ -91,12 +90,24 @@ export class EmployeeController {
         })
     }
 
-                const newEmployee = await this.employeeService.createEmployee(employee)
 
-                res.status(200).json(req.body)
+    getAll() {
+        this.router.get('/api/employees', async (req: Request, res: Response) => {
+            try {
+                const employees = await this.employeeService.getAll();
 
-            } catch (error) {
-                res.status(401).send(error);
+                if (!employees) {
+                    throw new Error('Not found employees')
+                }
+
+                res.status(200).json(employees);
+
+            } catch (err) {
+                res.status(404).send(err);
+            }
+
+        })
+    }
 
     getCount() {
         this.router.get('/api/employees/count', async (req: Request, res: Response) => {
