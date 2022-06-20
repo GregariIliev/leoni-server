@@ -47,17 +47,8 @@ export class PositionController {
         })
     }
 
-        //         if (!positions) {
-        //             throw new Error('Fetch positions fail!');
-        //         }
 
-        //         res.status(200).json(positions);
 
-        //     } catch (err) {
-        //         res.status(404).send();
-        //     }
-
-        // })
     }
 
     getRoutes() {
