@@ -57,8 +57,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: true,
       defaultValue: 0,
       validate: {
-        min: 0,
-        max: 2
+        min: {
+          args: [0],
+          msg: 'Minimum salary multiplayer on this positions is 0'
+        },
+        max: {
+          args: [2],
+          msg: 'Maximum salary multiplayer on this positions is 2'
+        }
       },
       field: 'salary_multiplayer'
     }
