@@ -24,6 +24,23 @@ export class DepartmentController {
             }
         })
     }
+
+    getCount() {
+        this.router.get('/api/departments/count', async (req: Request, res: Response) => {
+            try {
+                const departmentCount = await this.departmentService.count();
+
+                if (!departmentCount) {
+                    throw new Error('Fetch departments count fail');
+                }
+
+                res.status(200).json(departmentCount);
+
+            } catch (err) {
+                res.status(404).send(err)
+            }
+        })
+    }
             try {
                 const departments = await this.departmentService.getAllDepartmentsIncludePositions();
 
