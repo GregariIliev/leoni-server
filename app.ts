@@ -19,7 +19,7 @@ export class App {
 
             console.log(`Server is running on port ${PORT}`);
 
-            this.app.use(cors());
+            this.app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
             this.app.use(express.json());
             this.app.use(express.urlencoded({ extended: true }));
 
