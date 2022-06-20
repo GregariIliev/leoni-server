@@ -33,7 +33,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate(models: any) {
       this.hasOne(models.Employee, { foreignKey: 'admin_id' });
-      this.belongsTo(models.Department, { foreignKey: 'deparment_id' });
+      this.belongsTo(models.Department, { foreignKey: 'department_id' });
       this.belongsTo(models.Position, { foreignKey: 'position_id' });
     }
   }
