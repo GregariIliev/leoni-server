@@ -7,7 +7,12 @@ export class DepartmentController {
     constructor(private router: Router, private departmentService: DepartmentService) { }
 
     setRoutes() {
-        this.router.get('/api/departments', async (req: any, res: any) => {
+        this.getAll();
+        this.getCount();
+        this.getDepartmentsPositions();
+        this.create();
+    }
+
     getAll() {
         this.router.get('/api/departments', async (req: Request, res: Response) => {
             try {
@@ -41,6 +46,9 @@ export class DepartmentController {
             }
         })
     }
+
+    getDepartmentsPositions() {
+        this.router.get('/api/departments-positions', async (req: Request, res: Response) => {
             try {
                 const departments = await this.departmentService.getAllDepartmentsIncludePositions();
 
