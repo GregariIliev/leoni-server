@@ -3,35 +3,29 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
 
-export const valid = (req: Request, res: Response, next: NextFunction) => {
+export const authenticate = (req: Request, res: Response, next: NextFunction) => {
 
-    if (req.url === '/api/authenticate' && req.headers.cookie?.split('=')[0] === 'leoni') {
-        checkToken(req, res, next);
-        
+    if (req.headers.cookie?.split('=')[0] === 'leoni' && req.url === '/api/authenticate') {
         res.status(200).send();
 
-    } else if (req.url === '/api/employees/login') {
-        next();
+    } else if (req.headers.cookie?.split('=')[0] === 'leoni' && req.url !== '/api/authenticate') {
 
-    } else if (req.headers.cookie) {
-        checkToken(req, res, next);
+        try {
+            const token: any = req.headers.cookie?.split('=')[1];
+            const secret: any = process.env.JWT_SECRET;
+            const valid = jwt.verify(token, secret)
 
-    } else {
-        res.status(401).json({ valid: false });
-    }
+            if (valid) {
+                next()
 
-}
-const checkToken = (req: Request, res: Response, next: NextFunction) => {
-    const token: any = req.headers.cookie?.split('=')[1];
+            } else {
+                res.status(401).send();
+            }
 
-    const secret: any = process.env.JWT_SECRET;
-    try {
-        const valid = jwt.verify(token, secret)
-
-        if (valid) {
-            next();
+        } catch (error) {
+            return false
         }
-    } catch (error) {
-        res.status(401).json(error);
+    }else {
+        next();
     }
 }
