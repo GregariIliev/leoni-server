@@ -1,7 +1,7 @@
 import express, { Router, Application } from 'express'
 import cors from 'cors'
 import { Routes } from './routes/routes';
-import { valid } from './middleware/authentication';
+import { authenticate } from './middleware/authentication';
 
 export class App {
     declare app: Application;
@@ -21,7 +21,7 @@ export class App {
             this.app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
             this.app.use(express.json());
             this.app.use(express.urlencoded({ extended: true }));
-            this.app.use(valid);
+            this.app.use(authenticate);
 
             const routes = new Routes();
 
