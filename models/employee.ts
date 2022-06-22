@@ -3,7 +3,6 @@
 import { Model, DataTypes } from 'sequelize';
 
 import bcrypt from 'bcrypt'
-import { employees } from '../seeders/customEmployees';
 
 interface EmployeeAttributes {
   id: string,
