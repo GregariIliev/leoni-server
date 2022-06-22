@@ -76,7 +76,7 @@ export class DepartmentController {
                 }
 
             } catch (err: any) {
-                res.status(401).send(err);
+                res.status(424).send(err);
             }
         })
     }

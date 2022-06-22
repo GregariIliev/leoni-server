@@ -57,7 +57,7 @@ export class PositionController {
                 }
 
             } catch (err) {
-                res.status(401).send(err);
+                res.status(424).send(err);
             }
         })
     }
