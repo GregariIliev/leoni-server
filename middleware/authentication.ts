@@ -16,7 +16,9 @@ export const valid = (req: Request, res: Response, next: NextFunction) => {
     } else if (req.headers.cookie) {
         checkToken(req, res, next);
 
-        const token: any = req.headers.cookie?.split('=')[1];
+    } else {
+        res.status(401).json({ valid: false });
+    }
 
         const secret: any = process.env.JWT_SECRET;
 const checkToken = (req: Request, res: Response, next: NextFunction) => {
