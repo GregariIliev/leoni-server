@@ -14,20 +14,22 @@ export const valid = (req: Request, res: Response, next: NextFunction) => {
         next();
 
     } else if (req.headers.cookie) {
+        checkToken(req, res, next);
 
         const token: any = req.headers.cookie?.split('=')[1];
 
         const secret: any = process.env.JWT_SECRET;
+const checkToken = (req: Request, res: Response, next: NextFunction) => {
+    const token: any = req.headers.cookie?.split('=')[1];
 
+    const secret: any = process.env.JWT_SECRET;
+    try {
         const valid = jwt.verify(token, secret)
 
         if (valid) {
             next();
-            
-        } else {
-            res.status(401).json({ unauthorized: true });
         }
-    } else {
-        res.status(401).json({ unauthorized: true });
+    } catch (error) {
+        res.status(401).json(error);
     }
 }
