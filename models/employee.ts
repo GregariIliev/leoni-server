@@ -50,6 +50,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Fisrst name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'First name cannot be empty.'
         }
       },
       field: 'first_name'
@@ -61,6 +64,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Middle name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'Middle name cannot be empty.'
         }
       },
       field: 'middle_name'
@@ -72,6 +78,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Last name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'Last name cannot be empty.'
         }
       },
       field: 'last_name'
@@ -79,7 +88,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
     email: {
       type: DataTypes.STRING(30),
       unique: true,
-      allowNull: true
+      allowNull: true,
+      validate: {
+        isEmail: {
+          msg: 'Invalid email format.'
+        }
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -92,6 +106,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Addres name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'Address cannot be empty.'
         }
       }
     },
@@ -103,6 +120,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Phone name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'Phone cannot be empty.'
         }
       }
     },
@@ -128,6 +148,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         isIn: {
           args: [['A', 'B', 'C', 'R']],
           msg: 'Shift must one of A, B, C or R'
+        },
+        notEmpty: {
+          msg: 'Shift cannot be empty.'
         }
       }
     }

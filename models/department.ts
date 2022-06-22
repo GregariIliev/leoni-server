@@ -34,6 +34,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
         len: {
           args: [0, 20],
           msg: 'Department name must be at least 20 characters.'
+        },
+        notEmpty: {
+          msg: 'Name cannot be empty.'
         }
       }
     },
