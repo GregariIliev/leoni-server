@@ -4,13 +4,13 @@ import { Request, Response, NextFunction } from 'express';
 
 
 export const valid = (req: Request, res: Response, next: NextFunction) => {
-    if (req.url === '/api/employees/login') {
 
     if (req.url === '/api/authenticate' && req.headers.cookie?.split('=')[0] === 'leoni') {
         checkToken(req, res, next);
         
         res.status(200).send();
 
+    } else if (req.url === '/api/employees/login') {
         next();
 
     } else if (req.headers.cookie) {
