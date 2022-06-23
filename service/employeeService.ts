@@ -28,7 +28,7 @@ export class EmployeeService {
 
         const SECRET: any = process.env.JWT_SECRET;
 
-        const token = jwt.sign(payload, SECRET);
+        const token = jwt.sign(payload, SECRET, { expiresIn: '1h' });
 
         return token;
     }
