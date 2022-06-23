@@ -134,7 +134,7 @@ export class EmployeeController {
 
                 const id = req.params.id
 
-                const employee = await this.employeeService.getById(id);
+                const employee = await this.employeeService.getByIdInclude(id);
 
                 res.status(200).json(employee);
 
