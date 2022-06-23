@@ -35,8 +35,8 @@ export class EmployeeController {
 
                 res.cookie('leoni', token, {
                     httpOnly: true,
-                    expires: new Date(Date.now() + 900000),
-                    maxAge: 99999999
+                    expires: new Date(Date.now() + 60 * 60 * 1000),
+                    maxAge: 360000000
                     //secure: true
                 });
 
