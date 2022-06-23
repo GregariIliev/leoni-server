@@ -19,6 +19,7 @@ export class EmployeeController {
         this.createEmployee();
         this.getAll();
         this.getCount();
+        this.getById();
     }
 
     login() {
@@ -123,6 +124,22 @@ export class EmployeeController {
 
             } catch (err) {
                 res.status(404).send(err);
+            }
+        })
+    }
+
+    getById() {
+        this.router.get('/api/employees/:id', async (req: Request, res: Response) => {
+            try {
+
+                const id = req.params.id
+
+                const employee = await this.employeeService.getById(id);
+
+                res.status(200).json(employee);
+
+            } catch (error) {
+                res.status(404).send(error);
             }
         })
     }
