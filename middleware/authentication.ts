@@ -5,17 +5,17 @@ import { Request, Response, NextFunction } from 'express';
 
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
 
-    if (req.headers.cookie?.split('=')[0] === 'leoni' && req.url === '/api/authenticate') {
-        res.status(200).send();
-
-    } else if (req.headers.cookie?.split('=')[0] === 'leoni' && req.url !== '/api/authenticate') {
+    if (req.headers.cookie?.split('=')[0] === 'leoni') {
 
         try {
             const token: any = req.headers.cookie?.split('=')[1];
             const secret: any = process.env.JWT_SECRET;
             const valid = jwt.verify(token, secret)
 
-            if (valid) {
+            if (valid && req.url === '/api/authenticate') {
+                res.status(200).send();
+
+            } else if (valid) {
                 next()
 
             } else {
@@ -25,7 +25,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
         } catch (error) {
             return false
         }
-    }else {
+    } else {
         next();
     }
 }
