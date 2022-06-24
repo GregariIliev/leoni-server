@@ -14,15 +14,12 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
 
             if (valid) {
                 next()
-
             } else {
-                res.status(401).send();
+                res.status(401).json({error: 'Invalid token'})
             }
-
-        } catch (error) {
-            return false
         }
-    } else {
-        next();
+
+    } catch (error) {
+        res.status(401).json(error);
     }
 }
