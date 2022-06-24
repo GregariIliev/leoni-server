@@ -122,7 +122,7 @@ export class EmployeeController {
                 res.status(200).json(employeeCount);
 
             } catch (err) {
-                res.status(404).send(err);
+                res.status(404).json(err);
             }
         })
     }
@@ -138,7 +138,7 @@ export class EmployeeController {
                 res.status(200).json(employee);
 
             } catch (error) {
-                res.status(404).send(error);
+                res.status(404).json(error);
             }
         })
     }
