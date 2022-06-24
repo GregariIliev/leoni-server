@@ -40,11 +40,11 @@ export class EmployeeController {
                     //secure: true
                 });
 
-                res.status(200).json({ Authorized: true });
-
             } catch (err) {
 
                 res.status(401).send(err);
+                res.status(200).json({ email: email });
+                
             }
         })
     }
