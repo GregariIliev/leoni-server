@@ -40,11 +40,10 @@ export class EmployeeController {
                     //secure: true
                 });
 
-            } catch (err) {
-
-                res.status(401).send(err);
                 res.status(200).json({ email: email });
                 
+            } catch (err: any) {
+                res.status(401).json(err.message);
             }
         })
     }
@@ -105,7 +104,7 @@ export class EmployeeController {
                 res.status(200).json(employees);
 
             } catch (err) {
-                res.status(404).send(err);
+                res.status(404).json(err);
             }
 
         })
