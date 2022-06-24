@@ -12,10 +12,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
             const secret: any = process.env.JWT_SECRET;
             const valid = jwt.verify(token, secret)
 
-            if (valid && req.url === '/api/authenticate') {
-                res.status(200).send();
-
-            } else if (valid) {
+            if (valid) {
                 next()
 
             } else {
