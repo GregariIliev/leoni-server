@@ -33,4 +33,14 @@ export class DepartmentService {
     async create(department: any) {
         return await db.Department.create(department)
     }
+
+    async update(department: any, deparmtnetId: any) {
+
+        await db.setPositionsOnDepartments(deparmtnetId, department.positions);
+        return await db.Department.update(department, { where: { id: deparmtnetId } });
+    }
+
+    async delete(id: string) {
+        return await db.Department.destroy({ where: { id: id } })
+    }
 }
