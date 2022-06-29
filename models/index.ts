@@ -71,6 +71,10 @@ db.addPositionsOnDepartments = async (departmentId: number, positionsIds: number
     })
 }
 
+db.setPositionsOnDepartments = async (departmentId: any, positionsIds: any) => {
+  const department = await db.Department.findByPk(departmentId);
+
+  department.setPositions(positionsIds)
     .then(() => {
       console.log('Custom position are added to department.');
     })
