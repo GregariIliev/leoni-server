@@ -12,10 +12,15 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
             const secret: any = process.env.JWT_SECRET;
             const valid = jwt.verify(token, secret)
 
-            if (valid) {
+            if (valid && req.url === '/api/authenticate') {
+                res.status(200).json(true);
+
+            } else if (valid) {
                 next()
+
             } else {
-                res.status(401).json({error: 'Invalid token'})
+                res.status(401).json({ error: 'Invalid token' })
+
             }
         }
 
