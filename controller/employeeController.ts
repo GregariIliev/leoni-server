@@ -21,8 +21,7 @@ export class EmployeeController {
         this.getAll();
         this.getCount();
         this.getById();
-        this.getDelete();
-
+        this.getDelete();   
     }
 
     login() {
