@@ -151,7 +151,7 @@ export class EmployeeController {
 
                 const id = req.params.id
 
-                const employee = await this.employeeService.getByIdInclude(id);
+                const employee = await this.employeeService.getById(id);
 
                 if (!employee) {
                     throw new Error(`Cannot find departmanet whit id ${id}`)
