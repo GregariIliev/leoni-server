@@ -43,9 +43,10 @@ export class EmployeeService {
 
     async getAll() {
         return await db.Employee.findAll({
+            attributes: ['id', 'firstName', 'middleName', 'lastName', 'shift', 'salary', 'address', 'phone'],
             include: [
-                { model: db.Department },
-                { model: db.Position }
+                { model: db.Department, attributes: ['name'] },
+                { model: db.Position, attributes: ['name'] }
             ]
         });
     }
