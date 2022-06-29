@@ -59,10 +59,18 @@ db.createCustomPositions = async () => {
     .catch(() => console.log('Custom positions creation FAIL.'));
 }
 
-db.addPositionsOnDepartments = async (departmentId: number, positionsIs: number[]) => {
+db.addPositionsOnDepartments = async (departmentId: number, positionsIds: number[]) => {
   const department = await db.Department.findByPk(departmentId);
 
-  department.addPositions(positionsIs)
+  department.addPositions(positionsIds)
+    .then(() => {
+      console.log('Custom position are added to department.');
+    })
+    .catch(() => {
+      console.log('Fali to add custom position to department.');
+    })
+}
+
     .then(() => {
       console.log('Custom position are added to department.');
     })
