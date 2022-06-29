@@ -28,4 +28,12 @@ export class PositionService {
     async create(position: any) {
         return await db.Position.create(position);
     }
+
+    async update(position: any, id: string) {
+        return await db.Position.update(position, { where: { id: id } });
+    }
+
+    async delete(id: string) {
+        return await db.Position.destroy({ where: { id: id } });
+    }
 }
