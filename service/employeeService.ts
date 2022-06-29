@@ -37,6 +37,10 @@ export class EmployeeService {
         return db.Employee.create(employee);
     }
 
+    async update(employee: any, employeeId: string) {
+        return db.Employee.update(employee, { where: { id: employeeId } });
+    }
+
     async getAll() {
         return await db.Employee.findAll({
             include: [
@@ -58,5 +62,9 @@ export class EmployeeService {
                 { model: db.Position }
             ]
         })
+    }
+
+    async delete(id: string) {
+        return await db.Employee.destroy({ where: { id: id } });
     }
 }
