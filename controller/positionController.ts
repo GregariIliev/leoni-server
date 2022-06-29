@@ -9,7 +9,29 @@ export class PositionController {
     setRoutes() {
         this.getAll();
         this.getCount();
-        this.create();
+        this.getCreate();
+        this.getById();
+        this.getUpdate();
+        this.getDelete();
+    }
+
+    getById() {
+        this.router.get('/api/positions/:id', async (req: Request, res: Response) => {
+            try {
+                const id = req.params.id;
+
+                const position = await this.positionService.getById(id);
+
+                if (!position) {
+                    throw new Error(`Cannot find departmanet whit id ${id}`);
+                }
+
+                res.status(200).json(position);
+
+            } catch (err) {
+                res.status(404).json(err);
+            }
+        })
     }
 
     getAll() {
@@ -47,17 +69,47 @@ export class PositionController {
         })
     }
 
-    create() {
+    getCreate() {
         this.router.post('/api/positions', async (req: Request, res: Response) => {
             try {
-                const position = await this.positionService.create(req.body);
+                const position = req.body;
 
-                if (!position) {
-                    throw new Error('Fail create position');
-                }
+                const pos = await this.positionService.create(position);
+
+                res.status(201).json(pos);
 
             } catch (err) {
                 res.status(424).send(err);
+            }
+        })
+    }
+
+    getUpdate() {
+        this.router.put('/api/positions/:id', async (req: Request, res: Response) => {
+            try {
+                const positionId = req.params.id;
+                const position = req.body;
+
+                const updated = await this.positionService.update(position, positionId);
+
+                res.status(201).json(updated);
+            } catch (err) {
+                res.status(404).json(err);
+            }
+        })
+    }
+
+    getDelete() {
+        this.router.delete('/api/positions/:id', async (req: Request, res: Response) => {
+            try {
+                const id = req.params.id;
+
+                const deleted = await this.positionService.delete(id);
+
+                res.status(201).json(deleted);
+
+            } catch (err) {
+                res.status(404).json(err);
             }
         })
     }
