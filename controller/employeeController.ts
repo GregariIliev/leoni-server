@@ -133,8 +133,8 @@ export class EmployeeController {
             try {
                 const employeeCount = await this.employeeService.count();
 
-                if (!employeeCount) {
-                    throw new Error('Fetch employees count fail.')
+                if (employeeCount <= 0) {
+                    res.status(200).json(employeeCount);
                 }
 
                 res.status(200).json(employeeCount);
