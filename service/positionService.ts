@@ -6,7 +6,9 @@ export class PositionService {
     }
 
     async getAll() {
-        return await db.Position.findAll();
+        return await db.Position.findAll({
+            attributes: ['id', 'name', 'salaryMultiplayer', 'shift']
+        });
     }
 
     async createPosition(name: string, salaryMultiplayer: number) {
