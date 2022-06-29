@@ -11,8 +11,10 @@ export class PositionService {
         });
     }
 
-    async createPosition(name: string, salaryMultiplayer: number) {
-        return await db.Position.create(name, salaryMultiplayer);
+    async createPosition(position: any) {
+
+
+        return await db.Position.create(position);
     }
 
     async count() {
