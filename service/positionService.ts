@@ -21,7 +21,7 @@ export class PositionService {
         return await db.Position.count();
     }
 
-    async getById(id: number) {
+    async getById(id: string) {
         return await db.Position.findByPk(id);
     }
 
