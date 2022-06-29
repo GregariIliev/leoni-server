@@ -14,7 +14,12 @@ export class DepartmentService {
     }
 
     async getAll() {
-        return await db.Department.findAll();
+        return await db.Department.findAll({
+            attributes: ['id', 'name', 'maxEmployees', 'salaryMultiplayer'],
+            include: [
+                { model: db.Position }
+            ]
+        });
     }
 
     async count() {
