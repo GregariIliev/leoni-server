@@ -14,7 +14,8 @@ interface EmployeeAttributes {
   address: string,
   phone: string,
   salary: number,
-  shift: string
+  shift: string,
+  
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -103,8 +104,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
       allowNull: false,
       validate: {
         len: {
-          args: [0, 20],
-          msg: 'Addres name must be at least 20 characters.'
+          args: [0, 50],
+          msg: 'Addres name must be at least 50 characters.'
         },
         notEmpty: {
           msg: 'Address cannot be empty.'
@@ -161,7 +162,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             const hashPassword = await bcrypt.hash(employee.password, 12);
             employee.password = hashPassword
           }
-        }
+        },
       },
       sequelize,
       modelName: 'Employee'
