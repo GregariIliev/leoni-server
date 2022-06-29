@@ -26,7 +26,7 @@ export class DepartmentService {
         return await db.Department.count();
     }
 
-    async getById(id: number) {
+    async getById(id: string) {
         return await db.Department.findByPk(id);
     }
 
