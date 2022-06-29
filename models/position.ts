@@ -44,10 +44,16 @@ module.exports = (sequelize: any, DataTypes: any) => {
     salaryMultiplayer: {
       type: DataTypes.FLOAT(1.1),
       allowNull: true,
-      defaultValue: 0,
+      defaultValue: 1,
       validate: {
-        min: 0,
-        max: 2
+        min: {
+          args: [1],
+          msg: 'Minimum salary multiplayer on this positions is 1.0'
+        },
+        max: {
+          args: [2],
+          msg: 'Maximum salary multiplayer on this positions is 2.0'
+        }
       },
       field: 'salary_multiplayer'
     },
