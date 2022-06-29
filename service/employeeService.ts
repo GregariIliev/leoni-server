@@ -55,13 +55,14 @@ export class EmployeeService {
         return await db.Employee.count();
     }
 
-    async getByIdInclude(id: string) {
+    async getById(id: string) {
         return await db.Employee.findOne({
             where: { id: id },
+            attributes: ['id', 'firstName', 'middleName', 'lastName', 'shift', 'salary', 'address', 'phone', 'createdAt'],
             include: [
                 { model: db.Department },
                 { model: db.Position }
-            ]
+            ],
         })
     }
 
