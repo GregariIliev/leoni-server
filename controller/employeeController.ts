@@ -17,9 +17,12 @@ export class EmployeeController {
     setRoutes() {
         this.login();
         this.createEmployee();
+        this.getUpdate();
         this.getAll();
         this.getCount();
         this.getById();
+        this.getDelete();
+
     }
 
     login() {
@@ -41,7 +44,7 @@ export class EmployeeController {
                 });
 
                 res.status(200).json({ email: email });
-                
+
             } catch (err: any) {
                 res.status(401).json(err.message);
             }
@@ -91,6 +94,21 @@ export class EmployeeController {
         })
     }
 
+    getUpdate() {
+        this.router.put('/api/employees/:id', async (req: Request, res: Response) => {
+            try {
+                const employeeId = req.params.id
+                const employee = req.body;
+
+                const id = await this.employeeService.update(employee, employeeId);
+
+                res.status(201).json(id);
+            } catch (err) {
+                res.status(404).json(err);
+            }
+        })
+    }
+
 
     getAll() {
         this.router.get('/api/employees', async (req: Request, res: Response) => {
@@ -135,10 +153,29 @@ export class EmployeeController {
 
                 const employee = await this.employeeService.getByIdInclude(id);
 
+                if (!employee) {
+                    throw new Error(`Cannot find departmanet whit id ${id}`)
+                }
                 res.status(200).json(employee);
 
             } catch (error) {
                 res.status(404).json(error);
+            }
+        })
+    }
+
+    getDelete() {
+        this.router.delete('/api/employees/:id', async (req: Request, res: Response) => {
+            try {
+                const id = req.params.id;
+
+                const deleted = await this.employeeService.delete(id);
+
+                res.status(200).json(deleted);
+            } catch (err) {
+                console.log('err');
+
+                res.status(404).json(err);
             }
         })
     }
