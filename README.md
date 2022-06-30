@@ -27,7 +27,9 @@ All request at this end point send response whit stats 200 and json true if the 
 
 ### /api/employee/login
 
- Check the admin credentials and send response to client whit the admin email and set cookie whit jwt token.
+####You can login whit EMAIL: admin@abv.bg and PASSWORD: admin
+
+Check the admin credentials and send response to client whit the admin email and set cookie whit jwt token.
 
 ### /api/employee/create
 
