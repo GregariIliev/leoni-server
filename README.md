@@ -1,5 +1,8 @@
 # leoni-server
 
+##This server can be running whit leoni-client.
+## You can login whit EMAIL: admin@abv.bg and PASSWORD: admin
+
 At first time open the console and run npm install.
 
 Run the server: npm run dev.
@@ -26,8 +29,6 @@ All request at this end point send response whit stats 200 and json true if the 
 ## POST Employee
 
 ### /api/employee/login
-
-### You can login whit EMAIL: admin@abv.bg and PASSWORD: admin
 
 Check the admin credentials and send response to client whit the admin email and set cookie whit jwt token.
 
