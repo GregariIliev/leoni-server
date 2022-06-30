@@ -1,6 +1,6 @@
 # leoni-server
 
-##This server can be running whit leoni-client.
+## This server can be running whit leoni-client.
 ## You can login whit EMAIL: admin@abv.bg and PASSWORD: admin
 
 At first time open the console and run npm install.
