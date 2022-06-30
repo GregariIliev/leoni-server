@@ -9,7 +9,6 @@ export class DepartmentController {
     setRoutes() {
         this.getAll();
         this.getCount();
-        this.getDepartmentsPositions();
         this.create();
         this.getById();
         this.getUpdate();
@@ -64,23 +63,6 @@ export class DepartmentController {
 
             } catch (err) {
                 res.status(404).send(err)
-            }
-        })
-    }
-
-    getDepartmentsPositions() {
-        this.router.get('/api/departments-positions', async (req: Request, res: Response) => {
-            try {
-                const departments = await this.departmentService.getAllDepartmentsIncludePositions();
-
-                if (!departments) {
-                    throw new Error('Fetch departments fail!')
-                }
-
-                res.status(200).json(departments);
-
-            } catch (err) {
-                res.status(404).send(err);
             }
         })
     }
