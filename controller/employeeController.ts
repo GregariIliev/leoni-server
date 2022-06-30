@@ -16,7 +16,7 @@ export class EmployeeController {
 
     setRoutes() {
         this.login();
-        this.createEmployee();
+        this.getCreate();
         this.getUpdate();
         this.getAll();
         this.getCount();
@@ -50,8 +50,8 @@ export class EmployeeController {
         })
     }
 
-    createEmployee() {
-        this.router.post('/api/employees/register', async (req: Request, res: Response) => {
+    getCreate() {
+        this.router.post('/api/employees/create', async (req: Request, res: Response) => {
             try {
                 const employee = req.body;
                 const empty = Object.values(req.body).includes('');
